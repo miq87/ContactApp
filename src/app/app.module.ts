@@ -23,6 +23,7 @@ import { ContactAddComponent } from './components/contact-add/contact-add.compon
 import { ContactEditComponent } from './components/contact-edit/contact-edit.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ToastModule,
     AuthModule.forRoot({
       domain: 'miq3l.eu.auth0.com',
-      clientId: 'ajEACX6zhELB6TEKNel2cyFL8L0cT7Sd'
+      clientId: environment.clientId
     }),
     BrowserAnimationsModule,
     MatFormFieldModule,
