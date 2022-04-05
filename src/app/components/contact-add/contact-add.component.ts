@@ -32,14 +32,14 @@ export class ContactAddComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add(): void {
+  save(): void {
     this.contactService.save(this.contactForm.value).subscribe({
       next: (v) => {
-        this.onSuccess('Dodano nowy kontakt')
+        console.log('Contact saved successfully')
         this.router.navigate(['/contacts'])
       },
       error: (e) => {
-        console.error("Problem with saving new contact")
+        console.error('Problem with saving contact')
       }
     })
   }

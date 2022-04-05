@@ -26,6 +26,7 @@ export class ContactEditComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -42,15 +43,16 @@ export class ContactEditComponent implements OnInit {
     })
   }
 
-  edit() {
+  save() {
     console.log(this.contactForm.value)
     this.http.put(environment.contactsApiUrl + '/' +
         this.contactForm.value.id, this.contactForm.value).subscribe({
       next: (v) => {
-        console.log('Contact updated successfully')
+        console.log('Contact saved successfully')
+        this.router.navigate(['/contacts'])
       },
       error: (e) => {
-        console.error('Problem with updating contact')
+        console.error('Problem with saving contact')
       }
     })
   }
