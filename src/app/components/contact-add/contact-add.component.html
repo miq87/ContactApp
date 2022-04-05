@@ -39,8 +39,8 @@
           <input formControlName="phoneNumber" name="phoneNumber" maxlength="12">
         </div>
         <div>
-          <small class="text-danger m-2" *ngIf="contactForm.get('phoneNumber')?.hasError('minlength')">
-            * Minimum 9 znaków
+          <small class="text-danger m-2" *ngIf="contactForm.get('phoneNumber')?.hasError('pattern')">
+            * Minimum 9 cyfr
           </small>
         </div>
       </div>
