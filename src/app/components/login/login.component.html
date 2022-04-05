@@ -1,0 +1,5 @@
+<div class="btn-group m-2">
+    <button class="btn btn-md btn-success" *ngIf="!user" (click)="login()">Zaloguj</button>
+    <button class="btn btn-md btn-warning" *ngIf="user" (click)="logout()">Wyloguj</button>
+    <span *ngIf="user" class="m-2">Zalogowany jako {{ user.name }}</span>
+</div>

@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+html, body { height: 100%; }
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 2px;
+    margin: 20px;
+    color: beige;
+    background-color: black;
+}
+
+table {
+    color: #000;
+    font-size: 14px;
+}
+
+hr {
+    line-height: 2px;
+    color: orange;
+}
+
+label {
+    display: block;
+}
+
+input, select  {
+    background-color: orange;
+    border: 0px;
+    border-bottom: 4px solid royalblue	;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 4px 6px;
+}
+
+.btn {
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+input:focus {
+    outline: none;
+}
+
