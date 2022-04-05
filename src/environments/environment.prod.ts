@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  contactsApiUrl: "https://webappmm2022.azurewebsites.net/api/Contacts"
 };
