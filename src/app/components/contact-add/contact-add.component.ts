@@ -15,11 +15,11 @@ export class ContactAddComponent implements OnInit {
   positions = [ 'klient', 'współpracownik', 'szef' ]
 
   contactForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    phoneNumber: ['', Validators.required],
-    phoneCategory: ['', Validators.required],
-    email: ['', Validators.required],
+    firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
+    lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
+    phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]{9,12}")]],
+    phoneCategory: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
     birthdayDate: [''],
     position: ['']
   })
