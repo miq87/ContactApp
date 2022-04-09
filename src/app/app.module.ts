@@ -50,7 +50,7 @@ import { environment } from 'src/environments/environment';
       httpInterceptor: {
         allowedList: [
           {
-            uri: environment.audience + 'api/Contacts',
+            uri: environment.contactsApiUrl,
             httpMethod: HttpMethod.Post,
             tokenOptions: {
               audience: environment.audience,
@@ -58,7 +58,7 @@ import { environment } from 'src/environments/environment';
             }
           },
           {
-            uri: environment.audience + 'api/Contacts/*',
+            uri: environment.contactsApiUrl + '/*',
             httpMethod: HttpMethod.Put,
             tokenOptions: {
               audience: environment.audience,
@@ -66,7 +66,7 @@ import { environment } from 'src/environments/environment';
             }
           },
           {
-            uri: environment.audience + 'api/Contacts/*',
+            uri: environment.contactsApiUrl + '/*',
             httpMethod: HttpMethod.Delete,
             tokenOptions: {
               audience: environment.audience,
