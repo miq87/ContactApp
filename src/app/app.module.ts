@@ -46,13 +46,9 @@ import { environment } from 'src/environments/environment';
     AuthModule.forRoot({
       domain: 'miq3l.eu.auth0.com',
       clientId: environment.clientId,
-      //audience: environment.audience,
-      //scope: "write:contacts edit:contacts delete:contacts",
 
       httpInterceptor: {
         allowedList: [
-          //environment.audience + 'api',
-          //environment.audience + 'api/*',
           {
             uri: environment.audience + 'api/Contacts',
             httpMethod: HttpMethod.Post,
