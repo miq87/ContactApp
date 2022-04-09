@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 
 import { TableModule } from 'primeng/table';
@@ -18,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthHttpInterceptor, AuthModule, HttpMethod } from '@auth0/auth0-angular';
 import { ContactAddComponent } from './components/contact-add/contact-add.component';
 import { ContactEditComponent } from './components/contact-edit/contact-edit.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
@@ -45,7 +45,40 @@ import { environment } from 'src/environments/environment';
     ToastModule,
     AuthModule.forRoot({
       domain: 'miq3l.eu.auth0.com',
-      clientId: environment.clientId
+      clientId: environment.clientId,
+      //audience: environment.audience,
+      //scope: "write:contacts edit:contacts delete:contacts",
+
+      httpInterceptor: {
+        allowedList: [
+          //environment.audience + 'api',
+          //environment.audience + 'api/*',
+          {
+            uri: environment.audience + 'api/Contacts',
+            httpMethod: HttpMethod.Post,
+            tokenOptions: {
+              audience: environment.audience,
+              scope: 'write:contacts',
+            }
+          },
+          {
+            uri: environment.audience + 'api/Contacts/*',
+            httpMethod: HttpMethod.Put,
+            tokenOptions: {
+              audience: environment.audience,
+              scope: 'edit:contacts',
+            }
+          },
+          {
+            uri: environment.audience + 'api/Contacts/*',
+            httpMethod: HttpMethod.Delete,
+            tokenOptions: {
+              audience: environment.audience,
+              scope: 'delete:contacts',
+            }
+          }
+        ]
+      }
     }),
     BrowserAnimationsModule,
     MatFormFieldModule,
@@ -54,7 +87,9 @@ import { environment } from 'src/environments/environment';
     MatButtonModule,
     MatDatepickerModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

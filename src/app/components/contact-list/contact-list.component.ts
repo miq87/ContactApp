@@ -53,6 +53,7 @@ export class ContactListComponent implements OnInit {
         this.messengerService.sendMsg("Delete id: " + id)
       },
       error: (e) => {
+        console.log(e)
         console.error('Problem with deleting contact')
       }
     })

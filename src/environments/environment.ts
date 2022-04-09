@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  //contactsApiUrl: "https://webappmm2022.azurewebsites.net/api/Contacts",
   contactsApiUrl: "https://localhost:7215/api/Contacts",
-  clientId: "ajEACX6zhELB6TEKNel2cyFL8L0cT7Sd"
+  clientId: "ajEACX6zhELB6TEKNel2cyFL8L0cT7Sd",
+  audience: "https://localhost:7215/"
 };
 
 /*
