@@ -1,4 +1,5 @@
 <hr>
-<button type="button" class="btn btn-md btn-warning m-2" [routerLink]="['/contacts']">Lista Kontaktów</button>
-<button type="button" class="btn btn-md btn-primary m-2" [routerLink]="['/contacts/new']" *ngIf="user">Dodaj nowy kontakt</button>
+<button type="button" class="btn btn-md btn-warning m-2" [routerLink]="['/contacts/list']">Lista Kontaktów</button>
+<button type="button" class="btn btn-md btn-primary m-2" [routerLink]="['/contacts/new']"
+  *ngIf="(auth.isAuthenticated$ | async) === true">Dodaj nowy kontakt</button>
 <hr>

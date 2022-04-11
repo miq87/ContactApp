@@ -11,14 +11,12 @@ import { MessengerService } from 'src/app/services/messenger.service';
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[] = []
-  user: any
 
   constructor(public auth: AuthService,
     private contactsService: ContactsService,
     private messengerService: MessengerService) {}
 
   ngOnInit(): void {
-    this.getUser()
     this.loadContacts()
     this.messengerService.getMsg().subscribe({
       next: (v) => {
@@ -27,12 +25,6 @@ export class ContactListComponent implements OnInit {
       error: (e) => {
         console.error('Problem with loading contacts')
       }
-    })
-  }
-
-  getUser(): void {
-    this.auth.user$.subscribe((success: any) => {
-      this.user = success
     })
   }
 

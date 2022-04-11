@@ -46,6 +46,7 @@ import { environment } from 'src/environments/environment';
     AuthModule.forRoot({
       domain: 'miq3l.eu.auth0.com',
       clientId: environment.clientId,
+      audience: environment.audience,
 
       httpInterceptor: {
         allowedList: [

@@ -32,9 +32,9 @@
         <td><span class="p-column-title">Data urodzin: </span>{{contact.birthdayDate}}</td>
         <td>
           <div class="btn-group">
-            <button type="button" class="btn btn-sm btn-dark" *ngIf="user"
-              [routerLink]="['/contact', contact.id]">Edytuj</button>
-            <button type="button" class="btn btn-sm btn-danger" *ngIf="user"
+            <button type="button" class="btn btn-sm btn-dark" *ngIf="(auth.isAuthenticated$ | async) === true"
+              [routerLink]="['/contacts/', contact.id]">Edytuj</button>
+            <button type="button" class="btn btn-sm btn-danger" *ngIf="(auth.isAuthenticated$ | async) === true"
               (click)="deleteById(contact.id)">Usuń</button>
           </div>
         </td>

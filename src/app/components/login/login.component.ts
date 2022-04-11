@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -7,21 +7,9 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class LoginComponent implements OnInit {
 
-  public user: any
-  private sub: any
-
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
-    this.sub = this.auth.user$.subscribe({
-      next: (v) => {
-        this.user = v
-      },
-      error: (e) => {
-        console.log('Not logged')
-      }
-    })
-    
   }
 
   login(): void {
@@ -30,10 +18,6 @@ export class LoginComponent implements OnInit {
 
   logout(): void {
     this.auth.logout()
-  }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe()
   }
 
 }

@@ -9,13 +9,13 @@ import { ContactListComponent } from './components/contact-list/contact-list.com
 
 const routes: Routes = [
   { path: '', redirectTo: 'contacts', pathMatch: 'full' },
-  { path: 'contacts', component: ContactsComponent, pathMatch: 'prefix', canActivate: [], children: [
+  { path: 'contacts', component: ContactsComponent, pathMatch: 'prefix', children: [
     { path: '', component: ContactListComponent },
     { path: 'list', component: ContactListComponent, canActivate: [AuthGuard] },
     { path: 'new', component: ContactAddComponent, canActivate: [AuthGuard] },
-    { path: 'edit', component: ContactEditComponent, canActivate: [AuthGuard] }
+    { path: ':id', component: ContactEditComponent, canActivate: [AuthGuard] }
   ] },
-  { path: 'contact/:id', component: ContactEditComponent, canActivate: [] }
+  { path: '**', component: ContactsComponent },
 ];
 
 @NgModule({
